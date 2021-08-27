@@ -38,4 +38,8 @@ public class NovoAutorRequest {
 				+ ", instanteRegistro=" + instanteRegistro + "]";
 	}
 
+	public String getEmail() {
+		return this.email;
+	}
+
 }

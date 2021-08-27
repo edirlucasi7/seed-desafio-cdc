@@ -23,6 +23,9 @@ public class Autor {
 	@NotBlank @Size(max = 400) private String descricao;
 	private @NotNull LocalDateTime instanteRegistro;
 	
+	@Deprecated
+	public Autor() { }
+	
 	public Autor(@NotBlank String nome, @NotBlank @Email String email, @NotBlank @Size(max = 400) String descricao) {
 		this.nome = nome;
 		this.email = email;
