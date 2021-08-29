@@ -21,11 +21,10 @@ public class NovoAutorRequest {
 	private LocalDateTime instanteRegistro = LocalDateTime.now(); 
 
 	public NovoAutorRequest(@NotBlank String nome, @NotBlank @Email String email,
-			@NotBlank @Size(max = 400) String descricao, LocalDateTime instanteRegistro) {
+			@NotBlank @Size(max = 400) String descricao) {
 		this.nome = nome;
 		this.email = email;
 		this.descricao = descricao;
-		this.instanteRegistro = LocalDateTime.now();
 	}
 
 	public Autor toModel() {
