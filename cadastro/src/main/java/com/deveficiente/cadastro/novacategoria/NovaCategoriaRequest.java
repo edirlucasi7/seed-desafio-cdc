@@ -2,9 +2,12 @@ package com.deveficiente.cadastro.novacategoria;
 
 import javax.validation.constraints.NotBlank;
 
+import com.deveficiente.cadastro.novoautor.compartilhado.UniqueValue;
+
 public class NovaCategoriaRequest {
 
 	@NotBlank
+	@UniqueValue(domainClass = Categoria.class, fieldName = "nome")
 	private String nome;
 
 	public NovaCategoriaRequest() { }
