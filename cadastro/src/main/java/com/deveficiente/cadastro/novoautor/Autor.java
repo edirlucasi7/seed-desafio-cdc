@@ -31,6 +31,14 @@ public class Autor {
 		this.email = email;
 		this.descricao = descricao;
 		this.instanteRegistro = LocalDateTime.now();
-	} 
+	}	
 	
+	public String getNome() {
+		return this.nome;
+	}
+	
+	public String getDescricao() {
+		return descricao;
+	}
+
 }

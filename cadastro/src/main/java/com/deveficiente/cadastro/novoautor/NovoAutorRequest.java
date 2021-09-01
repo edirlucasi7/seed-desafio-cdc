@@ -31,12 +31,6 @@ public class NovoAutorRequest {
 		return new Autor(this.nome, this.email, this.descricao);
 	}
 
-	@Override
-	public String toString() {
-		return "NovoAutorRequest [nome=" + nome + ", email=" + email + ", descricao=" + descricao
-				+ ", instanteRegistro=" + instanteRegistro + "]";
-	}
-
 	public String getEmail() {
 		return this.email;
 	}
