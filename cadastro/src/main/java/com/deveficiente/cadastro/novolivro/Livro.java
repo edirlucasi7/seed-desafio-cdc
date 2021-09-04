@@ -35,6 +35,8 @@ public class Livro {
 	@ManyToOne
 	private @NotNull Autor autor;
 	
+	public Livro() { }
+	
 	public Livro(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo, @NotBlank String sumario,
 			@NotNull @Min(20) String preco, @NotNull @Min(100) String numeroPaginas, @NotBlank String isbn,
 			@Future @NotNull LocalDate dataPublicacao, @NotNull Categoria categoria, @NotNull Autor autor) {
@@ -48,6 +50,10 @@ public class Livro {
 		this.dataPublicacao = dataPublicacao;
 		this.categoria = categoria;
 		this.autor = autor;
+	}
+	
+	public Long getId() {
+		return id;
 	}
 
 	public String getTitulo() {
