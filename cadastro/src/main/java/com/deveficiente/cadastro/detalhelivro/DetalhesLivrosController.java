@@ -23,7 +23,7 @@ public class DetalhesLivrosController {
 				
 		List<DetalhesLivrosResponse> detalhesLivrosResponse = new ArrayList<>();
 		for (Livro livro : livrosCadastrados) {
-			DetalhesLivrosResponse livroResponse = new DetalhesLivrosResponse(livro.getId(), livro.getTitulo());
+			DetalhesLivrosResponse livroResponse = new DetalhesLivrosResponse(livro);
 			detalhesLivrosResponse.add(livroResponse);
 		}
 		
