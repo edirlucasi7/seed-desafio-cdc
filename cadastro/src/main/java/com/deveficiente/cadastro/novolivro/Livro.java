@@ -22,7 +22,7 @@ public class Livro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@NotBlank private String titulo;
+	private @NotBlank String titulo;
 	private @NotBlank @Size(max = 500) String resumo;
 	private @NotBlank String sumario;
 	private @NotNull @Min(20) String preco;
