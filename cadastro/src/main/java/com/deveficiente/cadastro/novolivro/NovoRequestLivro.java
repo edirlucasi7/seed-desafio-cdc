@@ -10,6 +10,7 @@ import javax.validation.constraints.Size;
 
 import com.deveficiente.cadastro.novacategoria.Categoria;
 import com.deveficiente.cadastro.novoautor.Autor;
+import com.deveficiente.cadastro.novoautor.compartilhado.ExistsId;
 import com.deveficiente.cadastro.novoautor.compartilhado.UniqueValue;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
@@ -26,7 +27,9 @@ public class NovoRequestLivro {
 	private @NotBlank String isbn;
 	@JsonFormat(shape = Shape.STRING, pattern = "dd/MM/yyyy")
 	private LocalDate dataPublicacao;
+	@ExistsId(domainClass = Categoria.class, fieldName = "id")
 	private @NotNull Long idCategoria;
+	@ExistsId(domainClass = Categoria.class, fieldName = "id")
 	private @NotNull Long idAutor;
 	
 	public NovoRequestLivro(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo, @NotBlank String sumario,

@@ -1,8 +1,8 @@
 package com.deveficiente.cadastro.detalhelivro;
 
-import java.util.Optional;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,18 +14,18 @@ import com.deveficiente.cadastro.novolivro.Livro;
 @RestController
 public class DetalhesSiteLivrosController {
 	
-	@Autowired
-	private LivroRepository repository;
+	@PersistenceContext
+	private EntityManager manager;
 
 	@GetMapping(value = "/livros/{id}")
-	public ResponseEntity<DetalhesSiteLivrosResponse> busca(@PathVariable("id") Long id) {
-		Optional<Livro> possivelLivro = repository.findById(id);
+	public ResponseEntity<DetalhesSiteLivroResponse> busca(@PathVariable("id") Long id) {
+		Livro possivelLivro = manager.find(Livro.class, id);
 		
-		if(!possivelLivro.isPresent()) {
+		if(possivelLivro == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 		
-		DetalhesSiteLivrosResponse livroResponse = new DetalhesSiteLivrosResponse(possivelLivro.get());
+		DetalhesSiteLivroResponse livroResponse = new DetalhesSiteLivroResponse(possivelLivro);
 		return new ResponseEntity<>(livroResponse, HttpStatus.OK);
 	}	
 	

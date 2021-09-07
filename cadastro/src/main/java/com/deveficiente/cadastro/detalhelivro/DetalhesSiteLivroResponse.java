@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import com.deveficiente.cadastro.novoautor.Autor;
 import com.deveficiente.cadastro.novolivro.Livro;
 
-public class DetalhesSiteLivrosResponse {
+public class DetalhesSiteLivroResponse {
 
 	private String titulo;
 	private String sumario;
@@ -15,7 +15,7 @@ public class DetalhesSiteLivrosResponse {
 	private LocalDate dataPublicacao;
 	private Autor autor;
 	
-	public DetalhesSiteLivrosResponse(Livro livro) {
+	public DetalhesSiteLivroResponse(Livro livro) {
 		super();
 		this.titulo = livro.getTitulo();
 		this.sumario = livro.getSumario();
