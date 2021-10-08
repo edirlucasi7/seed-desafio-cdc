@@ -1,5 +1,6 @@
 package com.deveficiente.casadocodigo.novolivro;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.EntityManager;
@@ -21,7 +22,7 @@ public class NovoRequestLivro {
 	private @NotBlank String titulo;
 	private @NotBlank @Size(max = 500) String resumo;
 	private @NotBlank String sumario;
-	private @NotNull @Min(20) String preco;
+	private @NotNull @Min(20) BigDecimal preco;
 	private @NotNull @Min(100) String numeroPaginas;
 	@UniqueValue(domainClass = Livro.class, fieldName = "isbn")
 	private @NotBlank String isbn;
@@ -33,7 +34,7 @@ public class NovoRequestLivro {
 	private @NotNull Long idAutor;
 	
 	public NovoRequestLivro(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo, @NotBlank String sumario,
-			@NotNull @Min(20) String preco, @NotNull @Min(100) String numeroPaginas, @NotBlank String isbn,
+			@NotNull @Min(20) BigDecimal preco, @NotNull @Min(100) String numeroPaginas, @NotBlank String isbn,
 			@NotNull Long idCategoria, @NotNull Long idAutor) {
 		super();
 		this.titulo = titulo;
@@ -72,7 +73,7 @@ public class NovoRequestLivro {
 		return sumario;
 	}
 
-	public String getPreco() {
+	public BigDecimal getPreco() {
 		return preco;
 	}
 

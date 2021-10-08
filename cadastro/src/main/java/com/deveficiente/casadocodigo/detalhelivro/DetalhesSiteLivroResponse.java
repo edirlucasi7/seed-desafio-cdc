@@ -1,5 +1,6 @@
 package com.deveficiente.casadocodigo.detalhelivro;
 
+import java.math.BigDecimal;
 import java.time.format.DateTimeFormatter;
 
 import com.deveficiente.casadocodigo.novoautor.Autor;
@@ -9,7 +10,7 @@ public class DetalhesSiteLivroResponse {
 
 	private String titulo;
 	private String sumario;
-	private String preco;
+	private BigDecimal preco;
 	private String numeroPaginas;
 	private String isbn;
 	private String dataPublicacao;
@@ -34,7 +35,7 @@ public class DetalhesSiteLivroResponse {
 		return sumario;
 	}
 
-	public String getPreco() {
+	public BigDecimal getPreco() {
 		return preco;
 	}
 

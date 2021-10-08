@@ -29,12 +29,14 @@ public class EstadoPertenceAPaisValidator implements Validator{
 		
 		NovaCompraRequest request = (NovaCompraRequest) target;
 		
-		Pais pais = manager.find(Pais.class, request.getIdPais());
-		Estado estado = manager.find(Estado.class, request.getIdEstado());
-		
-		if(!estado.perteceAPais(pais)) {
-			errors.reject("idEstado", null, "este estado não pertence ao pais informado!");
+		if(request.getIdEstado()!=null) {
+			Pais pais = manager.find(Pais.class, request.getIdPais());
+			Estado estado = manager.find(Estado.class, request.getIdEstado());			
+			if(!estado.perteceAPais(pais)) {
+				errors.reject("idEstado", null, "este estado não pertence ao pais informado!");
+			}
 		}
+		
 	}
 
 	

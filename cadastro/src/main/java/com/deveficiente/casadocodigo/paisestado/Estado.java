@@ -37,5 +37,10 @@ public class Estado {
 	public boolean perteceAPais(Pais pais) {
 		return this.pais.equals(pais);
 	}
+
+	@Override
+	public String toString() {
+		return "Estado [id=" + id + ", nome=" + nome + ", pais=" + pais + "]";
+	}
 	
 }

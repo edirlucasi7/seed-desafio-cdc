@@ -1,5 +1,6 @@
 package com.deveficiente.casadocodigo.novolivro;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
@@ -25,7 +26,7 @@ public class Livro {
 	private @NotBlank String titulo;
 	private @NotBlank @Size(max = 500) String resumo;
 	private @NotBlank String sumario;
-	private @NotNull @Min(20) String preco;
+	private @NotNull @Min(20) BigDecimal preco;
 	private @NotNull @Min(100) String numeroPaginas;
 	private @NotBlank String isbn;
 	@Future
@@ -38,7 +39,7 @@ public class Livro {
 	public Livro() { }
 	
 	public Livro(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo, @NotBlank String sumario,
-			@NotNull @Min(20) String preco, @NotNull @Min(100) String numeroPaginas, @NotBlank String isbn,
+			@NotNull @Min(20) BigDecimal preco, @NotNull @Min(100) String numeroPaginas, @NotBlank String isbn,
 			@Future @NotNull LocalDate dataPublicacao, @NotNull Categoria categoria, @NotNull Autor autor) {
 		super();
 		this.titulo = titulo;
@@ -68,7 +69,7 @@ public class Livro {
 		return sumario;
 	}
 
-	public String getPreco() {
+	public BigDecimal getPreco() {
 		return preco;
 	}
 
@@ -90,6 +91,38 @@ public class Livro {
 
 	public Autor getAutor() {
 		return autor;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((isbn == null) ? 0 : isbn.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Livro other = (Livro) obj;
+		if (isbn == null) {
+			if (other.isbn != null)
+				return false;
+		} else if (!isbn.equals(other.isbn))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Livro [id=" + id + ", titulo=" + titulo + ", resumo=" + resumo + ", sumario=" + sumario + ", preco="
+				+ preco + ", numeroPaginas=" + numeroPaginas + ", isbn=" + isbn + ", dataPublicacao=" + dataPublicacao
+				+ ", categoria=" + categoria + ", autor=" + autor + "]";
 	}
 
 }
