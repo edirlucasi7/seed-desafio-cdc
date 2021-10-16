@@ -5,7 +5,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
-import com.deveficiente.casadocodigo.novoautor.compartilhado.ExistsId;
+import com.deveficiente.casadocodigo.compartilhado.ExistsId;
 import com.deveficiente.casadocodigo.novolivro.Livro;
 
 public class NovoCompraItemRequest {

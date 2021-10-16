@@ -4,8 +4,8 @@ import javax.persistence.EntityManager;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import com.deveficiente.casadocodigo.novoautor.compartilhado.ExistsId;
-import com.deveficiente.casadocodigo.novoautor.compartilhado.UniqueValue;
+import com.deveficiente.casadocodigo.compartilhado.ExistsId;
+import com.deveficiente.casadocodigo.compartilhado.UniqueValue;
 
 public class NovoEstadoRequest {
 	

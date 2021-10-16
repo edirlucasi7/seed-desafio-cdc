@@ -19,10 +19,12 @@ public class FechaCompraController {
 	private EntityManager manager;
 	@Autowired
 	private EstadoPertenceAPaisValidator estadoPertenceAPaisValidator;
+	@Autowired
+	private CupomValidoValidator cupomValidoValidator;
 	
 	@InitBinder
 	public void init(WebDataBinder binder) {
-		binder.addValidators(new VerificaDocumentoCpfCnpjValidator(), estadoPertenceAPaisValidator);
+		binder.addValidators(new VerificaDocumentoCpfCnpjValidator(), estadoPertenceAPaisValidator, cupomValidoValidator);
 	}
 
 	@Transactional

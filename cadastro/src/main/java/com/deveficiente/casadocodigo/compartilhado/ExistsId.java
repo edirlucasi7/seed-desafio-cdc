@@ -1,4 +1,4 @@
-package com.deveficiente.casadocodigo.novoautor.compartilhado;
+package com.deveficiente.casadocodigo.compartilhado;
 
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
@@ -11,12 +11,11 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 @Documented
-@Constraint(validatedBy = {UniqueValueValidator.class})
+@Constraint(validatedBy = {ExistsIdValidator.class})
 @Target({FIELD})
 @Retention(RUNTIME)
-public @interface UniqueValue {
-
-	String message() default "{com.deveficiente.beanvalidation.uniquevalue}";
+public @interface ExistsId {
+	String message() default "{com.deveficiente.beanvalidation.existsid}";
 	Class<?>[] groups() default { };
 	Class<? extends Payload>[] payload() default { };
 	String fieldName();

@@ -1,4 +1,4 @@
-package com.deveficiente.casadocodigo.novoautor.compartilhado;
+package com.deveficiente.casadocodigo.compartilhado;
 
 public class FieldErrorOutputDto {
 

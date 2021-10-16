@@ -2,7 +2,7 @@ package com.deveficiente.casadocodigo.paisestado;
 
 import javax.validation.constraints.NotBlank;
 
-import com.deveficiente.casadocodigo.novoautor.compartilhado.UniqueValue;
+import com.deveficiente.casadocodigo.compartilhado.UniqueValue;
 
 public class NovoPaisRequest {
 

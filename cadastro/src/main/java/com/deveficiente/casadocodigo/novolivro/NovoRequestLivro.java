@@ -9,10 +9,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.deveficiente.casadocodigo.compartilhado.ExistsId;
+import com.deveficiente.casadocodigo.compartilhado.UniqueValue;
 import com.deveficiente.casadocodigo.novacategoria.Categoria;
 import com.deveficiente.casadocodigo.novoautor.Autor;
-import com.deveficiente.casadocodigo.novoautor.compartilhado.ExistsId;
-import com.deveficiente.casadocodigo.novoautor.compartilhado.UniqueValue;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
