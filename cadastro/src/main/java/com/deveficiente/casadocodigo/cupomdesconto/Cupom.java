@@ -49,13 +49,14 @@ public class Cupom {
 	public LocalDate getValidade() {
 		return validade;
 	}
+	
+	public BigDecimal getPorcentagem() {
+		return porcentagem;
+	}
 
 	public boolean cupomValido() {
 		LocalDate dataAtual = LocalDate.now(); 
-		if(dataAtual.isBefore(validade)) {
-			return true;
-		}
-		return false;
+		return dataAtual.isBefore(validade);
 	}
 	
 }

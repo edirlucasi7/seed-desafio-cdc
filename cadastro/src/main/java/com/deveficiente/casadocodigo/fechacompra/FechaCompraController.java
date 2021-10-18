@@ -18,19 +18,23 @@ public class FechaCompraController {
 	@PersistenceContext
 	private EntityManager manager;
 	@Autowired
+	private CupomRepository repository;
+	@Autowired
+	private VerificaDocumentoCpfCnpjValidator verificaDocumentoCpfCnpjValidator;
+	@Autowired
 	private EstadoPertenceAPaisValidator estadoPertenceAPaisValidator;
 	@Autowired
 	private CupomValidoValidator cupomValidoValidator;
 	
 	@InitBinder
 	public void init(WebDataBinder binder) {
-		binder.addValidators(new VerificaDocumentoCpfCnpjValidator(), estadoPertenceAPaisValidator, cupomValidoValidator);
+		binder.addValidators(verificaDocumentoCpfCnpjValidator, estadoPertenceAPaisValidator, cupomValidoValidator);
 	}
 
 	@Transactional
 	@PostMapping(value = "/compras")
 	public String executa(@RequestBody @Valid NovaCompraRequest request) {
-		Compra compra = request.toModel(manager);
+		Compra compra = request.toModel(manager,repository);
 		manager.persist(compra);
 		return compra.toString();
 	}

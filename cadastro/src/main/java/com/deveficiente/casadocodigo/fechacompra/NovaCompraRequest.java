@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.internal.constraintvalidators.hv.br.CNPJValidator;
 import org.hibernate.validator.internal.constraintvalidators.hv.br.CPFValidator;
 import org.springframework.util.Assert;
+import org.springframework.util.StringUtils;
 
 import com.deveficiente.casadocodigo.compartilhado.ExistsId;
 import com.deveficiente.casadocodigo.cupomdesconto.Cupom;
@@ -41,8 +42,8 @@ public class NovaCompraRequest {
 	private String cep;
 	@NotNull
 	private NovoPedidoRequest pedido;
-	@ExistsId(domainClass = Cupom.class, fieldName = "id")
-	private Long idCupom;
+	@ExistsId(domainClass = Cupom.class, fieldName = "codigo")
+	private String codigoCupom;
 
 	public NovaCompraRequest(@Email @NotBlank String email, @NotBlank String nome, @NotBlank String sobreNome,
 			@NotBlank String documento, @NotBlank String endereco, @NotBlank String cidade, @NotNull Long idPais,
@@ -73,19 +74,20 @@ public class NovaCompraRequest {
 		return this.idEstado;
 	}
 
-	public Long getIdCupom() {
-		return idCupom;
+	public String getCodigoCupom() {
+		return codigoCupom;
 	}
 	
-	public Compra toModel(EntityManager manager) {
+	public Compra toModel(EntityManager manager, CupomRepository repository) {
 		Pais pais = manager.find(Pais.class, idPais);
 				
 		Function<Compra,Pedido> funcaoConstrutorPedido = pedido.toModel(manager);
 		
 		Compra compra = new Compra(email, nome, sobreNome, documento, endereco, cidade,
 				pais, telefone, cep, funcaoConstrutorPedido);
-		if(idCupom!=null) {
-			compra.setCupom(manager.find(Cupom.class, idCupom));			
+		if(StringUtils.hasText(codigoCupom)) {
+			Cupom cupom = repository.findByCodigo(codigoCupom);
+			compra.setCupom(cupom);			
 		}
 		if(idEstado!=null) {
 			compra.setEstado(manager.find(Estado.class, idEstado));
