@@ -52,6 +52,9 @@ public class Compra {
 	private Pedido pedido;
 	@Embedded
 	private CupomAplicado codigoAplicado;
+	
+	@Deprecated
+	public Compra() {  }
 
 	public Compra(@Email @NotBlank String email, @NotBlank String nome, @NotBlank String sobreNome,
 			@NotBlank String documento, @NotBlank String endereco, @NotBlank String cidade, Pais pais,
@@ -77,6 +80,54 @@ public class Compra {
 		Assert.isTrue(cupom.cupomValido(), "o cupom passado tem data de validade expirada!");
 		Assert.isNull(codigoAplicado, "Olha, o código não pode ser trocado depois de aplicado em uma compra!"); 
 		this.codigoAplicado = new CupomAplicado(cupom);
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public String getSobreNome() {
+		return sobreNome;
+	}
+
+	public String getDocumento() {
+		return documento;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public Pais getPais() {
+		return pais;
+	}
+
+	public Estado getEstado() {
+		return estado;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public Pedido getPedido() {
+		return pedido;
+	}
+
+	public CupomAplicado getCodigoAplicado() {
+		return codigoAplicado;
 	}
 
 	@Override

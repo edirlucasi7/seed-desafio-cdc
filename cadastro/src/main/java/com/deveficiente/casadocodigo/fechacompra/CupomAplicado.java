@@ -33,6 +33,14 @@ public class CupomAplicado {
 		this.localDataMomento = cupom.getValidade();
 	}
 
+	public BigDecimal getPercentualDescontoMomento() {
+		return percentualDescontoMomento;
+	}
+
+	public LocalDate getLocalDataMomento() {
+		return localDataMomento;
+	}
+
 	@Override
 	public String toString() {
 		return "CupomAplicado [cupom=" + cupom + ", percentualDescontoMomento=" + percentualDescontoMomento

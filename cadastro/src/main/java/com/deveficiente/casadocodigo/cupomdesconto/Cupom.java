@@ -56,7 +56,7 @@ public class Cupom {
 
 	public boolean cupomValido() {
 		LocalDate dataAtual = LocalDate.now(); 
-		return dataAtual.isBefore(validade);
+		return dataAtual.compareTo(getValidade()) <= 0;
 	}
 	
 }

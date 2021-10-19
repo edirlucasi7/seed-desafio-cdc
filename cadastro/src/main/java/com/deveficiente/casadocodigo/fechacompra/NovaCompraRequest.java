@@ -1,5 +1,6 @@
 package com.deveficiente.casadocodigo.fechacompra;
 
+import java.util.Optional;
 import java.util.function.Function;
 
 import javax.persistence.EntityManager;
@@ -94,6 +95,10 @@ public class NovaCompraRequest {
 		}
 		
 		return compra;
+	}
+	
+	public Optional<String> temCupomDesconto() {
+		return Optional.ofNullable(codigoCupom);
 	}
 
 	@Override

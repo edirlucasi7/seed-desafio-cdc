@@ -31,6 +31,9 @@ public class Pedido {
 	@Size(min = 1)
 	private Set<ItemPedido> itens = new HashSet<>();
 	
+	@Deprecated
+	public Pedido() {  }
+	
 	public Pedido(@NotNull @Valid Compra compra, @Size(min = 1) Set<ItemPedido> itens) {
 		Assert.isTrue(!itens.isEmpty(), "todo pedido deve ter pelo menos um item!");
 		this.compra = compra;
@@ -42,6 +45,14 @@ public class Pedido {
 				(atual, proximo) ->	atual.add(proximo));
 			
 		return totalPedido.doubleValue() == total.doubleValue();
+	}
+	
+	public Long getId() {
+		return id;
+	}
+
+	public Set<ItemPedido> getItens() {
+		return itens;
 	}
 
 	@Override
