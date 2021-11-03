@@ -19,7 +19,7 @@ public class LivrosController {
 	
 	@PostMapping(value = "/livros/cadastrar")
 	@Transactional
-	public ResponseEntity<NovoRequestLivro> cria(@RequestBody @Valid NovoRequestLivro request) {
+	public ResponseEntity<NovoLivroRequest> cria(@RequestBody @Valid NovoLivroRequest request) {
 		Livro novoLivro = request.toModel(manager);
 		manager.persist(novoLivro);
 		return new ResponseEntity<>(request, HttpStatus.OK);

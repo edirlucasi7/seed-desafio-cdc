@@ -9,6 +9,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.util.Assert;
+
 import com.deveficiente.casadocodigo.compartilhado.ExistsId;
 import com.deveficiente.casadocodigo.compartilhado.UniqueValue;
 import com.deveficiente.casadocodigo.novacategoria.Categoria;
@@ -16,7 +18,7 @@ import com.deveficiente.casadocodigo.novoautor.Autor;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
-public class NovoRequestLivro {
+public class NovoLivroRequest {
 
 	@UniqueValue(domainClass = Livro.class, fieldName = "titulo")
 	private @NotBlank String titulo;
@@ -33,7 +35,7 @@ public class NovoRequestLivro {
 	@ExistsId(domainClass = Categoria.class, fieldName = "id")
 	private @NotNull Long idAutor;
 	
-	public NovoRequestLivro(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo, @NotBlank String sumario,
+	public NovoLivroRequest(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo, @NotBlank String sumario,
 			@NotNull @Min(20) BigDecimal preco, @NotNull @Min(100) String numeroPaginas, @NotBlank String isbn,
 			@NotNull Long idCategoria, @NotNull Long idAutor) {
 		super();
@@ -57,6 +59,10 @@ public class NovoRequestLivro {
 	public Livro toModel(EntityManager manager) {
 		Categoria categoria = manager.find(Categoria.class, idCategoria);
 		Autor autor = manager.find(Autor.class, idAutor);
+		
+		Assert.state(autor!=null, "O livro não pode cadastrar um livro com um autor inexistente");
+		Assert.state(categoria!=null, "O livro não pode cadastrar um livro com um categoria inexistente");
+		
 		return new Livro(titulo, resumo, sumario, preco, numeroPaginas, isbn,
 				dataPublicacao, categoria, autor);
 	}

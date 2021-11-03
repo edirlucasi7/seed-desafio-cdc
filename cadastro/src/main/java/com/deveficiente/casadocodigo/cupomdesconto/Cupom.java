@@ -8,8 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Future;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
+
+import org.springframework.util.Assert;
 
 @Entity
 public class Cupom {
@@ -31,7 +34,8 @@ public class Cupom {
 		
 	}
 	
-	public Cupom(@NotNull String codigo, @NotNull @Positive BigDecimal porcentagem, @NotNull @Future LocalDate validade) {
+	public Cupom(@NotNull String codigo, @NotNull @Positive BigDecimal porcentagem, @NotNull @FutureOrPresent LocalDate validade) {
+		Assert.isTrue(validade.compareTo(LocalDate.now()) >= 0, "A validade do cupom esta expirada!");
 		this.codigo = codigo;
 		this.porcentagem = porcentagem;
 		this.validade = validade;
@@ -56,7 +60,7 @@ public class Cupom {
 
 	public boolean cupomValido() {
 		LocalDate dataAtual = LocalDate.now(); 
-		return dataAtual.compareTo(getValidade()) <= 0;
+		return dataAtual.compareTo(this.validade) <= 0;
 	}
 	
 }
