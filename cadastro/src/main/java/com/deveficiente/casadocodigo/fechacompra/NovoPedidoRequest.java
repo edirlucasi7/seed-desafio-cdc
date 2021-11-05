@@ -21,10 +21,10 @@ public class NovoPedidoRequest {
 	@Min(1)
 	private BigDecimal total;
 	@Size(min = 1)
-	private List<NovoCompraItemRequest> itens;
+	private List<NovoPedidoItemRequest> itens;
 	
 	public NovoPedidoRequest(@NotNull @Positive @Min(1) BigDecimal total,
-			@Size(min = 1) List<NovoCompraItemRequest> itens) {
+			@Size(min = 1) List<NovoPedidoItemRequest> itens) {
 		super();
 		this.total = total;
 		this.itens = itens;
@@ -44,6 +44,10 @@ public class NovoPedidoRequest {
 			return pedido;
 		};		
 		
+	}
+
+	public @Positive @NotNull BigDecimal getTotal() {
+		return this.total;
 	}
 
 }

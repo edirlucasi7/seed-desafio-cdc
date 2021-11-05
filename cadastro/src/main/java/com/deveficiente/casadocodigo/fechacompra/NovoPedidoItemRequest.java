@@ -8,7 +8,7 @@ import javax.validation.constraints.Positive;
 import com.deveficiente.casadocodigo.compartilhado.ExistsId;
 import com.deveficiente.casadocodigo.novolivro.Livro;
 
-public class NovoCompraItemRequest {
+public class NovoPedidoItemRequest {
 
 	@ExistsId(domainClass = Livro.class, fieldName = "id")
 	private Long idLivro;
@@ -16,7 +16,7 @@ public class NovoCompraItemRequest {
 	@Min(1)
 	private int quantidade;
 
-	public NovoCompraItemRequest(Long idLivro, @Positive @Min(1) int quantidade) {
+	public NovoPedidoItemRequest(Long idLivro, @Positive @Min(1) int quantidade) {
 		super();
 		this.idLivro = idLivro;
 		this.quantidade = quantidade;
