@@ -10,6 +10,8 @@ import javax.persistence.EntityManager;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.Mockito;
 
 import com.deveficiente.casadocodigo.cupomdesconto.Cupom;
@@ -58,31 +60,31 @@ public class PedidoTest {
 	}
 
 	@Test
-	@DisplayName("cria compra com itens")
+	@DisplayName("cria pedido com itens")
 	void teste1() throws Exception {	
 		
 		Compra novaCompra = requestCompra.toModel(manager, cupomRepository);
-		Set<ItemPedido> itemPedido = Set.of(new ItemPedido(livro, 2));
-		Pedido novoPedido = new Pedido(novaCompra, itemPedido);
+		Set<ItemPedido> itensPedido = Set.of(new ItemPedido(livro, 2));
+		Pedido novoPedido = new Pedido(novaCompra, itensPedido);
 		
 		Assertions.assertNotNull(novoPedido);
 
 	}
 	
 	@Test
-	@DisplayName("cria compra sem itens")
+	@DisplayName("nao cria pedido sem pelo menos um item")
 	void teste2() throws Exception {	
 		
 		Compra novaCompra = requestCompra.toModel(manager, cupomRepository);	
-		Set<ItemPedido> itemPedidos = Set.of();
+		Set<ItemPedido> itensPedido = Set.of();
 	
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
-			new Pedido(novaCompra, itemPedidos);
+			new Pedido(novaCompra, itensPedido);
 		});
 	}
 	
 	@Test
-	@DisplayName("verifica a igualdade do valor total que chegou na request e o valor calculado pela api")
+	@DisplayName("verifica a igualdade do valor total do pedido que chegou na request e o valor calculado pela api")
 	void teste3() throws Exception {
 			
 		Compra novaCompra = requestCompra.toModel(manager, cupomRepository);	
@@ -95,7 +97,7 @@ public class PedidoTest {
 	}
 	
 	@Test
-	@DisplayName("verifica a disparidade do valor total que chegou na request e o valor calculado pela api")
+	@DisplayName("verifica a disparidade do valor total do pedido que chegou na request e o valor calculado pela api")
 	void teste4() throws Exception {
 		
 		NovoPedidoRequest pedidoRequest = new NovoPedidoRequest(new BigDecimal("35"), itens);
@@ -106,6 +108,24 @@ public class PedidoTest {
 		Pedido pedido = new Pedido(novaCompra, itemPedido);
 		
 		Assertions.assertFalse(pedido.totalIgual(pedidoRequest.getTotal()));
+		
+	}
+	
+	@ParameterizedTest
+	@DisplayName("verifica se o totaldo pedido é igual ao passado como argumento")
+	@CsvSource({
+		"50, true",
+		"49.9, false",
+		"50.1, false",
+	})
+	void teste5(BigDecimal valor, boolean resultadoEsperado) throws Exception {
+		
+		Compra novaCompra = requestCompra.toModel(manager, cupomRepository);	
+		
+		Set<ItemPedido> itemPedido = Set.of(new ItemPedido(livro, 5));
+		Pedido pedido = new Pedido(novaCompra, itemPedido);
+		
+		Assertions.assertEquals(resultadoEsperado, pedido.totalIgual(valor));
 		
 	}
 	
