@@ -3,13 +3,12 @@ package com.deveficiente.casadocodigo.cupomdesconto;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import javax.validation.constraints.Future;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
 import com.deveficiente.casadocodigo.compartilhado.UniqueValue;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 public class NovoCupomRequest {
 	
@@ -20,8 +19,8 @@ public class NovoCupomRequest {
 	@Positive
 	private BigDecimal porcentagem;
 	@NotNull
-	@Future
-	@JsonFormat(shape = Shape.STRING, pattern = "dd/MM/yyyy")
+	@FutureOrPresent
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private LocalDate validade;
 	
 	
@@ -32,10 +31,6 @@ public class NovoCupomRequest {
 
 	public Cupom toModel() {
 		return new Cupom(codigo, porcentagem, validade);
-	}
-	
-	public void setValidade(LocalDate validade) {
-		this.validade = validade;
 	}
 
 }

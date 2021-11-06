@@ -16,7 +16,6 @@ import com.deveficiente.casadocodigo.compartilhado.UniqueValue;
 import com.deveficiente.casadocodigo.novacategoria.Categoria;
 import com.deveficiente.casadocodigo.novoautor.Autor;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 public class NovoLivroRequest {
 
@@ -28,7 +27,7 @@ public class NovoLivroRequest {
 	private @NotNull @Min(100) String numeroPaginas;
 	@UniqueValue(domainClass = Livro.class, fieldName = "isbn")
 	private @NotBlank String isbn;
-	@JsonFormat(shape = Shape.STRING, pattern = "dd/MM/yyyy")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private LocalDate dataPublicacao;
 	@ExistsId(domainClass = Categoria.class, fieldName = "id")
 	private @NotNull Long idCategoria;
@@ -47,13 +46,6 @@ public class NovoLivroRequest {
 		this.isbn = isbn;
 		this.idCategoria = idCategoria;
 		this.idAutor = idAutor;
-	}
-	
-	/*
-	 * criei esse set porque o jackson está sendo incapaz de deserializar a data pelo construtor.
-	*/
-	public void setDataPublicacao(LocalDate dataPublicacao) {
-		this.dataPublicacao = dataPublicacao;
 	}
 
 	public Livro toModel(EntityManager manager) {
