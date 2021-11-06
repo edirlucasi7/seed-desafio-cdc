@@ -99,6 +99,11 @@ public class NovaCompraRequest {
 	public Optional<String> temCupomDesconto() {
 		return Optional.ofNullable(codigoCupom);
 	}
+	
+
+	public Optional<Long> temEstado() {
+		return Optional.ofNullable(idEstado);
+	}
 
 	@Override
 	public String toString() {
