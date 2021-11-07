@@ -1,7 +1,5 @@
 package com.deveficiente.casadocodigo.fechacompra;
 
-import java.util.Optional;
-
 import javax.persistence.EntityManager;
 
 import org.springframework.stereotype.Component;
@@ -34,10 +32,9 @@ public class EstadoPertenceAPaisValidator implements Validator{
 		
 		NovaCompraRequest request = (NovaCompraRequest) target;
 		
-		Optional<Long> temEstado = request.temEstado();
-		if(temEstado.isPresent()) {
+		if(request.temEstado()) {
 			Pais pais = manager.find(Pais.class, request.getIdPais());
-			Estado estado = manager.find(Estado.class, request.getIdEstado());			
+			Estado estado = manager.find(Estado.class, request.getIdEstado());		
 			if(!estado.perteceAPais(pais)) {
 				errors.reject("idEstado", null, "este estado não pertence ao pais informado!");
 			}

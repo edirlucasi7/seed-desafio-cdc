@@ -101,8 +101,8 @@ public class NovaCompraRequest {
 	}
 	
 
-	public Optional<Long> temEstado() {
-		return Optional.ofNullable(idEstado);
+	public Boolean temEstado() {
+		return this.idEstado!=null;
 	}
 
 	@Override

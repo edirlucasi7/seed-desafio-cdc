@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.Errors;
 
@@ -23,26 +22,25 @@ import com.deveficiente.casadocodigo.paisestado.Pais;
 public class EstadoPertencePaisValidatorTest {
 
 	private EntityManager manager = Mockito.mock(EntityManager.class);
+	private Pais pais = new Pais("Padrao");
 	private List<NovoPedidoItemRequest> itens = List.of(new NovoPedidoItemRequest(1l, 5));
 	private NovoPedidoRequest pedidoRequest = new NovoPedidoRequest(new BigDecimal("50"), itens);
 	private NovaCompraRequest request = new NovaCompraRequest("", "", "", "", "", "", 1l, "", "", pedidoRequest);
 	
 	
 	@Test
-	@DisplayName("nao devevria passar caso tenha estado que nao pertece ao pais")
+	@DisplayName("deveria bloquear compra com pais e estado nao pertecente a compra")
 	void teste1() throws Exception {
 	
 		Errors errors = new BeanPropertyBindingResult(request, "target");
 
-		Pais paisBrasil = new Pais("Brasil");
-		Pais paisPortugal = new Pais("Potugal");
-		Estado estado = new Estado("Ceara", paisBrasil);
-		ReflectionTestUtils.setField(estado, "pais", paisPortugal);
+		Pais pais2 = new Pais("Diferente");
+		Estado estadoDeOutroPais = new Estado("", pais2);
 		
-		request.setIdEstado(1);
-	
-		Mockito.when(manager.find(Pais.class, request.getIdPais())).thenReturn(paisBrasil);
-		Mockito.when(manager.find(Estado.class, request.getIdEstado())).thenReturn(estado);
+		Mockito.when(manager.find(Estado.class, 2l)).thenReturn(estadoDeOutroPais);
+		Mockito.when(manager.find(Pais.class, 1l)).thenReturn(pais);
+
+		request.setIdEstado(2l);
 		
 		EstadoPertenceAPaisValidator validator = new EstadoPertenceAPaisValidator(manager);
 		validator.validate(request, errors);
@@ -61,8 +59,10 @@ public class EstadoPertencePaisValidatorTest {
 		Pais pais = new Pais("Brasil");
 		Estado estado = new Estado("Ceara", pais);
 	
-		Mockito.when(manager.find(Pais.class, request.getIdPais())).thenReturn(pais);
-		Mockito.when(manager.find(Estado.class, request.getIdEstado())).thenReturn(estado);
+		Mockito.when(manager.find(Pais.class, 1l)).thenReturn(pais);
+		Mockito.when(manager.find(Estado.class, 1l)).thenReturn(estado);
+		
+		request.setIdEstado(1l);
 		
 		EstadoPertenceAPaisValidator validator = new EstadoPertenceAPaisValidator(manager);
 		validator.validate(request, errors);
