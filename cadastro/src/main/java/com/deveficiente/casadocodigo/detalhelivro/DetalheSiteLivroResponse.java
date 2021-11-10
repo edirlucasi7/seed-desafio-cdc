@@ -6,17 +6,17 @@ import java.time.format.DateTimeFormatter;
 import com.deveficiente.casadocodigo.novoautor.Autor;
 import com.deveficiente.casadocodigo.novolivro.Livro;
 
-public class DetalhesSiteLivroResponse {
+public class DetalheSiteLivroResponse {
 
 	private String titulo;
 	private String sumario;
 	private BigDecimal preco;
-	private String numeroPaginas;
+	private int numeroPaginas;
 	private String isbn;
 	private String dataPublicacao;
 	private Autor autor;
 	
-	public DetalhesSiteLivroResponse(Livro livro) {
+	public DetalheSiteLivroResponse(Livro livro) {
 		super();
 		this.titulo = livro.getTitulo();
 		this.sumario = livro.getSumario();
@@ -39,7 +39,7 @@ public class DetalhesSiteLivroResponse {
 		return preco;
 	}
 
-	public String getNumeroPaginas() {
+	public int getNumeroPaginas() {
 		return numeroPaginas;
 	}
 

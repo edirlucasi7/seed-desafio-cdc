@@ -12,22 +12,22 @@ import org.springframework.web.bind.annotation.RestController;
 import com.deveficiente.casadocodigo.novolivro.Livro;
 
 @RestController
-public class DetalhesLivrosController {
+public class DetalheLivroController {
 
 	@Autowired
 	private LivroRepository repository;
 	
 	@GetMapping(value = "/livros/detalhes")
-	public ResponseEntity<List<DetalhesLivrosResponse>> executa() {
+	public ResponseEntity<List<DetalheLivroResponse>> executa() {
 		List<Livro> livrosCadastrados = repository.findAll();
 				
-		List<DetalhesLivrosResponse> detalhesLivrosResponse = new ArrayList<>();
+		List<DetalheLivroResponse> detalheLivroResponse = new ArrayList<>();
 		for (Livro livro : livrosCadastrados) {
-			DetalhesLivrosResponse livroResponse = new DetalhesLivrosResponse(livro);
-			detalhesLivrosResponse.add(livroResponse);
+			DetalheLivroResponse livroResponse = new DetalheLivroResponse(livro);
+			detalheLivroResponse.add(livroResponse);
 		}
 		
-		return new ResponseEntity<>(detalhesLivrosResponse, HttpStatus.OK);
+		return new ResponseEntity<>(detalheLivroResponse, HttpStatus.OK);
 	}
 	
 }

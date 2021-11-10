@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.EntityManager;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -24,9 +25,10 @@ public class NovoLivroRequest {
 	private @NotBlank @Size(max = 500) String resumo;
 	private @NotBlank String sumario;
 	private @NotNull @Min(20) BigDecimal preco;
-	private @NotNull @Min(100) String numeroPaginas;
+	private @NotNull @Min(100) int numeroPaginas;
 	@UniqueValue(domainClass = Livro.class, fieldName = "isbn")
 	private @NotBlank String isbn;
+	@FutureOrPresent
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private LocalDate dataPublicacao;
 	@ExistsId(domainClass = Categoria.class, fieldName = "id")
@@ -35,7 +37,7 @@ public class NovoLivroRequest {
 	private @NotNull Long idAutor;
 	
 	public NovoLivroRequest(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo, @NotBlank String sumario,
-			@NotNull @Min(20) BigDecimal preco, @NotNull @Min(100) String numeroPaginas, @NotBlank String isbn,
+			@NotNull @Min(20) BigDecimal preco, @NotNull @Min(100) int numeroPaginas, @NotBlank String isbn,
 			@NotNull Long idCategoria, @NotNull Long idAutor) {
 		super();
 		this.titulo = titulo;
@@ -75,7 +77,7 @@ public class NovoLivroRequest {
 		return preco;
 	}
 
-	public String getNumeroPaginas() {
+	public int getNumeroPaginas() {
 		return numeroPaginas;
 	}
 

@@ -1,6 +1,5 @@
 package com.deveficiente.casadocodigo.novacategoria;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +13,6 @@ public class Categoria {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotBlank
-	@Column(unique = true)
 	private String nome;
 
 	public Categoria() { }

@@ -2,12 +2,12 @@ package com.deveficiente.casadocodigo.detalhelivro;
 
 import com.deveficiente.casadocodigo.novolivro.Livro;
 
-public class DetalhesLivrosResponse {
+public class DetalheLivroResponse {
 	
 	private Long id;
 	private String nome;
 	
-	public DetalhesLivrosResponse(Livro livro) {
+	public DetalheLivroResponse(Livro livro) {
 		super();
 		this.id = livro.getId();
 		this.nome = livro.getTitulo();

@@ -27,7 +27,7 @@ public class Livro {
 	private @NotBlank @Size(max = 500) String resumo;
 	private @NotBlank String sumario;
 	private @NotNull @Min(20) BigDecimal preco;
-	private @NotNull @Min(100) String numeroPaginas;
+	private @NotNull @Min(100) int numeroPaginas;
 	private @NotBlank String isbn;
 	@Future
 	private @NotNull LocalDate dataPublicacao;
@@ -39,7 +39,7 @@ public class Livro {
 	public Livro() { }
 	
 	public Livro(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo, @NotBlank String sumario,
-			@NotNull @Min(20) BigDecimal preco, @NotNull @Min(100) String numeroPaginas, @NotBlank String isbn,
+			@NotNull @Min(20) BigDecimal preco, @NotNull @Min(100) int numeroPaginas, @NotBlank String isbn,
 			@Future @NotNull LocalDate dataPublicacao, @NotNull Categoria categoria, @NotNull Autor autor) {
 		super();
 		this.titulo = titulo;
@@ -73,7 +73,7 @@ public class Livro {
 		return preco;
 	}
 
-	public String getNumeroPaginas() {
+	public int getNumeroPaginas() {
 		return numeroPaginas;
 	}
 

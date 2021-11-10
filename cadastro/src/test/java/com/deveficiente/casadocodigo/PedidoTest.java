@@ -41,7 +41,7 @@ public class PedidoTest {
 	private Autor autor = new Autor("nome", "email@email.com", "descricao");
 	private Categoria categoria = new Categoria("categoria");
 
-	private Livro livro = new Livro("titulo", "resumo", "sumario", BigDecimal.TEN, "100", "97834985782",
+	private Livro livro = new Livro("titulo", "resumo", "sumario", BigDecimal.TEN, 100, "97834985782",
 			LocalDate.of(2000, 10, 10), categoria, autor);
 
 	private NovaCompraRequest requestCompra = new NovaCompraRequest("", "", "", "", "", "", 1l, "", "", pedidoRequest);

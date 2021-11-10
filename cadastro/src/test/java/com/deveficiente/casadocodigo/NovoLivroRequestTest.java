@@ -15,7 +15,7 @@ import com.deveficiente.casadocodigo.novolivro.NovoLivroRequest;
 
 public class NovoLivroRequestTest {
 
-	private NovoLivroRequest request = new NovoLivroRequest("", "", "", BigDecimal.TEN, "", "", 1l, 1l);
+	private NovoLivroRequest request = new NovoLivroRequest("", "", "", BigDecimal.TEN, 100, "", 1l, 1l);
 	
 	@Test
 	@DisplayName("cria o livro com categoria e autor cadastrados")

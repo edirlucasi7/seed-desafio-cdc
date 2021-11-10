@@ -27,9 +27,9 @@ public class AutoresController {
 		binder.addValidators(proibeEmailDuplicadoAutorValidator);
 	}
 	
-	@PostMapping("/cadastrar")
+	@PostMapping("/autores")
 	@Transactional
-	public ResponseEntity<?> cadastra(@RequestBody @Valid NovoAutorRequest request) {
+	public ResponseEntity<?> cria(@RequestBody @Valid NovoAutorRequest request) {
 		Autor autor = request.toModel();
 		manager.persist(autor);
 		return new ResponseEntity<>(HttpStatus.OK);
