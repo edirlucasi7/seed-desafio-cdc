@@ -10,6 +10,7 @@ public class DetalheSiteLivroResponse {
 
 	private String titulo;
 	private String sumario;
+	private String resumo;
 	private BigDecimal preco;
 	private int numeroPaginas;
 	private String isbn;
@@ -20,6 +21,7 @@ public class DetalheSiteLivroResponse {
 		super();
 		this.titulo = livro.getTitulo();
 		this.sumario = livro.getSumario();
+		this.resumo = livro.getResumo();
 		this.preco = livro.getPreco();
 		this.numeroPaginas = livro.getNumeroPaginas();
 		this.isbn = livro.getIsbn();
@@ -53,6 +55,10 @@ public class DetalheSiteLivroResponse {
 
 	public Autor getAutor() {
 		return autor;
+	}
+
+	public String getResumo() {
+		return resumo;
 	}
 	
 }

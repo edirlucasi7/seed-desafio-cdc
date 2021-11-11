@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class CriaEstadoRequest {
+public class EstadosController {
 
 	@Autowired
 	private EntityManager manager;
@@ -25,4 +25,5 @@ public class CriaEstadoRequest {
 		manager.persist(novoEstado);
 		return new ResponseEntity<>(request, HttpStatus.OK);
 	}
+	
 }

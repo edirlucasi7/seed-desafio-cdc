@@ -39,6 +39,10 @@ public class Autor {
 		return descricao;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
 	@Override
 	public String toString() {
 		return "Autor [id=" + id + ", nome=" + nome + ", email=" + email + ", descricao=" + descricao
