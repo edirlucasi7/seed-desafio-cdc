@@ -38,4 +38,5 @@ public class FechaCompraController {
 		manager.persist(compra);
 		return compra.toString();
 	}
+	
 }

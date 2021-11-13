@@ -8,6 +8,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
+import com.deveficiente.casadocodigo.compartilhado.Generated;
 import com.deveficiente.casadocodigo.novolivro.Livro;
 
 @Embeddable
@@ -46,6 +47,7 @@ public class ItemPedido {
 	}
 
 	@Override
+	@Generated(Generated.ECLIPSE)
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -54,6 +56,7 @@ public class ItemPedido {
 	}
 
 	@Override
+	@Generated(Generated.ECLIPSE)
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;

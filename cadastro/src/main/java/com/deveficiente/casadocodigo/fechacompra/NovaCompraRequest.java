@@ -14,6 +14,7 @@ import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
 import com.deveficiente.casadocodigo.compartilhado.ExistsId;
+import com.deveficiente.casadocodigo.compartilhado.Generated;
 import com.deveficiente.casadocodigo.cupomdesconto.Cupom;
 import com.deveficiente.casadocodigo.paisestado.Estado;
 import com.deveficiente.casadocodigo.paisestado.Pais;
@@ -106,6 +107,7 @@ public class NovaCompraRequest {
 	}
 
 	@Override
+	@Generated(Generated.ECLIPSE)
 	public String toString() {
 		return "NovaCompraRequest [email=" + email + ", nome=" + nome + ", sobreNome=" + sobreNome + ", documento="
 				+ documento + ", endereco=" + endereco + ", cidade=" + cidade + ", idPais=" + idPais + ", idEstado="

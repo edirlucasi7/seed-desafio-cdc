@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Assumptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.MethodMode;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import net.jqwik.api.ForAll;
@@ -26,8 +28,9 @@ public class EstadosControllerTest {
 	private CustomMockMvc mvc;
 	private static Set<String> unicos = new HashSet<>();
 	
-	@Property(tries = 10)
+	@Property(tries = 2)
 	@Label("fluxo de cadastro de estado")
+	@DirtiesContext(methodMode = MethodMode.BEFORE_METHOD)
 	void teste(@ForAll @AlphaChars @StringLength(min = 1, max = 100) String nome) throws Exception {
 		
 		Assumptions.assumeTrue(unicos.add(nome));

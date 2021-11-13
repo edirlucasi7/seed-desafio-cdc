@@ -38,6 +38,10 @@ public class Estado {
 		return this.pais.equals(pais);
 	}
 
+	public Long getId() {
+		return id;
+	}
+
 	@Override
 	public String toString() {
 		return "Estado [id=" + id + ", nome=" + nome + ", pais=" + pais + "]";

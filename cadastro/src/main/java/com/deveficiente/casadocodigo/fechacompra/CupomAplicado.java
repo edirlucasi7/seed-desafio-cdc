@@ -9,6 +9,7 @@ import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
+import com.deveficiente.casadocodigo.compartilhado.Generated;
 import com.deveficiente.casadocodigo.cupomdesconto.Cupom;
 
 @Embeddable
@@ -42,6 +43,7 @@ public class CupomAplicado {
 	}
 
 	@Override
+	@Generated(Generated.ECLIPSE)
 	public String toString() {
 		return "CupomAplicado [cupom=" + cupom + ", percentualDescontoMomento=" + percentualDescontoMomento
 				+ ", localDataMomento=" + localDataMomento + "]";

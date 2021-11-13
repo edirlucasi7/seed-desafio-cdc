@@ -9,7 +9,7 @@ import com.deveficiente.casadocodigo.fechacompra.Pedido;
 import com.deveficiente.casadocodigo.paisestado.Estado;
 import com.deveficiente.casadocodigo.paisestado.Pais;
 
-public class DetalhesComprasResponse {
+public class DetalheCompraResponse {
 
 	private String email;
 	private String nome;
@@ -26,7 +26,7 @@ public class DetalhesComprasResponse {
 	private Boolean existeCupom;  
 	private BigDecimal valorCompraCupomAplicado;
 	
-	public DetalhesComprasResponse(Compra compra) {
+	public DetalheCompraResponse(Compra compra) {
 		this.email = compra.getEmail();
 		this.nome = compra.getNome();
 		this.sobreNome = compra.getSobreNome();

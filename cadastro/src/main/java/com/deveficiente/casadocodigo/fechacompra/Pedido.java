@@ -17,6 +17,8 @@ import javax.validation.constraints.Size;
 
 import org.springframework.util.Assert;
 
+import com.deveficiente.casadocodigo.compartilhado.Generated;
+
 @Entity
 public class Pedido {
 
@@ -56,6 +58,7 @@ public class Pedido {
 	}
 
 	@Override
+	@Generated(Generated.ECLIPSE)
 	public String toString() {
 		return "Pedido [itens=" + itens + "]";
 	}

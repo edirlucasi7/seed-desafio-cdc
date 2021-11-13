@@ -20,7 +20,6 @@ public class EstadosController {
 	@PostMapping(value = "/estados")
 	@Transactional
 	public ResponseEntity<?> cria(@RequestBody @Valid NovoEstadoRequest request) {
-		System.out.println(request);
 		Estado novoEstado = request.toModel(manager);		
 		manager.persist(novoEstado);
 		return new ResponseEntity<>(request, HttpStatus.OK);

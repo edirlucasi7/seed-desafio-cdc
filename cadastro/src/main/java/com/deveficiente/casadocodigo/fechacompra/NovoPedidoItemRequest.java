@@ -6,6 +6,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
 import com.deveficiente.casadocodigo.compartilhado.ExistsId;
+import com.deveficiente.casadocodigo.compartilhado.Generated;
 import com.deveficiente.casadocodigo.novolivro.Livro;
 
 public class NovoPedidoItemRequest {
@@ -23,6 +24,7 @@ public class NovoPedidoItemRequest {
 	}
 
 	@Override
+	@Generated(Generated.ECLIPSE)
 	public String toString() {
 		return "NovoCompraItemRequest [idLivro=" + idLivro + ", quantidade=" + quantidade + "]";
 	}

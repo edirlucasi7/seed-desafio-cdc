@@ -34,8 +34,8 @@ public class AutoresControllerTest {
 
 	@Property(tries = 20)
 	@Label("fluxo de cadastro de novo autor")
-	void teste1(@ForAll @AlphaChars @StringLength(min = 1, max = 255) String nome,
-			@ForAll @AlphaChars @StringLength(min = 1, max = 50) String email,
+	void teste(@ForAll @AlphaChars @StringLength(min = 1, max = 255) String nome,
+			@ForAll @AlphaChars @StringLength(min = 1, max = 10) String email,
 			@ForAll @AlphaChars @StringLength(min = 1, max = 255) String descricao) throws Exception {
 
 		Assumptions.assumeTrue(emailsGerados.add(email));
